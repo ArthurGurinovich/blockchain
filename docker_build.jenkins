@@ -1,25 +1,25 @@
 #!groovy
-// Run docker build
+// Check ub1 properties
 properties([disableConcurrentBuilds()])
 
-pipline{
-	agent {
-		label: 'master'
-	}
-	options {
-		buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-		timestamps()
-	}
-	stage{
-		stage("Create Docker image"){
-			steps {
-				echo "===== Start Building image ====="
-			}
-		}
-		stage("Create Files image"){
-			steps {
-				echo "===== Start Building image ====="
-			}
-		}
-	}
+pipeline {
+    agent { 
+        label 'master'
+        }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("First step") {
+            steps {
+                sh 'Test 1'
+            }
+        }
+        stage("Second step") {
+            steps {
+                sh 'Test 2'
+            }
+        }
+    }
 }
