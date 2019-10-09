@@ -14,9 +14,11 @@ pipline{
 		stage("Create Docker image"){
 			steps {
 				echo "===== Start Building image ====="
-				dir ('docker/toolbox'){
-					sh 'docker build . '
-				}
+			}
+		}
+		stage("Create Files image"){
+			steps {
+				echo "===== Start Building image ====="
 			}
 		}
 	}
